@@ -1,14 +1,5 @@
 import React from 'react';
-import {
-  StyleSheet,
-  ScrollView,
-  View,
-  Image,
-  Text,
-  TouchableOpacity,
-  StatusBar,
-  TextInput,
-} from 'react-native';
+
 const Stack = createStackNavigator();
 
 function stacksreen() {

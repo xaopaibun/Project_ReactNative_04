@@ -65,13 +65,8 @@ const App = () =>{
         <Stack.Screen name="DangNhap" component={DangNhap} options={{headerShown :false,headerTitle: 'Đăng Nhập', headerTitleAlign: 'center'}}/>
         <Stack.Screen name = "DangKy" component = {DangKy} options={{headerShown :false, headerTitle: 'Đăng Ký'}}/>
         <Stack.Screen name = "HomeApp" component = {DrawerApp} options={{headerShown :false}}/>
-
       </Stack.Navigator>
-      
     </NavigationContainer>
     );
 }
-const styles = StyleSheet.create({
-   
-});
 export default  App;

@@ -17,7 +17,9 @@ const DangNhap = ({navigation}) => {
         //SDT === '0352343938' && MK === 'vanquy' ?  Alert.alert('Thông báo', 'Bạn đã đăng nhập thành công')     : Alert.alert('Thông báo', 'Sai Tài khoản và mật khẩu');
         if(SDT === '0352343938' && MK === 'vanquy'){
             Alert.alert('Thông báo', 'Bạn đã đăng nhập thành công');
-            navigation.navigate('TabViewApp');
+            setTK('');
+            setMK('');
+            navigation.navigate('HomeApp');
         }
         else{
             Alert.alert('Thông báo', 'Sai Tài khoản và mật khẩu')
@@ -35,11 +37,11 @@ const DangNhap = ({navigation}) => {
             <View style={styles.From_All_Input}>
                  <View style={{marginTop: 20}}>
                     <Text style={{fontSize: 12,fontWeight: '600',lineHeight: 18, color:'#444444'}}>Số điện thoại</Text>
-                    <TextInput style={{ borderBottomWidth: 1, borderBottomColor:'#DDDDDD', paddingVertical:  10}}  keyboardType = 'numeric' onChangeText= {(value) => setTK(value)}  />
+                    <TextInput style={{ borderBottomWidth: 1, borderBottomColor:'#DDDDDD', paddingVertical:  10}}  keyboardType = 'numeric' onChangeText= {(value) => setTK(value)}  value={SDT}/>
                 </View>
                 <View style={{marginTop: 20}}>
                     <Text style={{fontSize: 12,fontWeight: '600',lineHeight: 18, color:'#444444'}}>Mật Khẩu</Text>
-                    <TextInput style={{ borderBottomWidth: 1, borderBottomColor:'#DDDDDD', paddingVertical:  10}}  keyboardType = 'default' secureTextEntry ={true} onChangeText= {(value) => setMK(value)} />
+                    <TextInput style={{ borderBottomWidth: 1, borderBottomColor:'#DDDDDD', paddingVertical:  10}}  keyboardType = 'default' secureTextEntry ={true} value={MK} onChangeText= {(value) => setMK(value)} />
                 </View>
                 
                 <TouchableOpacity >

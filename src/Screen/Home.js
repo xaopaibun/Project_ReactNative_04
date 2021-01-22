@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { CheckBox,Button,StyleSheet, Text, View, TouchableOpacity, TextInput, ScrollView, FlatList, Alert} from 'react-native';
+import { CheckBox,Button,StyleSheet, Text, View, TouchableOpacity, TextInput, ScrollView, FlatList, Alert, Image, StatusBar} from 'react-native';
 
 
 const Item = ({item}, props) =>{
@@ -13,9 +13,18 @@ const Item = ({item}, props) =>{
     props.data(item.text);
     
   };
+  React.useEffect(() => {
+    !isSelected ?
+      <Image style={{width: 15, height: 15}} source={require('../assets/IMG/checkbox_false.png')} 
+  /> : <Image
+  style={{width: 15, height: 15}}
+  source={ require('../assets/IMG/checkboxtrue.png')} 
+/>
+  }, [isSelected])
+  const Check = () => isSelected ? setSelection(true) : setSelection(false);
   return(
     <View style={{margin: 10, flexDirection: 'row'}}>
-      <CheckBox
+      {/* <CheckBox
           value={isSelected}
           onValueChange={setSelection}
           onChange ={() =>{
@@ -26,8 +35,16 @@ const Item = ({item}, props) =>{
             }
           }}
         
-        />
-      <Text style={{fontSize: 14, color: 'black'}}>{item.text}</Text>
+        /> */}
+        <TouchableOpacity onPress={Check} style={{flexDirection:'row'}}>
+        {!isSelected ?
+      <Image style={{width: 15, height: 15}} source={require('../assets/IMG/checkbox_false.png')} 
+  /> : <Image
+  style={{width: 15, height: 15}}
+  source={ require('../assets/IMG/checkboxtrue.png')} 
+/>}
+              <Text style={{fontSize: 14, color: 'black', paddingLeft: 5}}>{item.text}</Text>
+        </TouchableOpacity>
     </View>
   );
 }
@@ -93,6 +110,7 @@ const Home = ({navigation}) =>{
     return(
       <ScrollView>
         <View style={styles.container}>
+          <StatusBar barStyle = 'dark-content'></StatusBar>
             <View style={styles.container_content}>
               <View style={styles.flex}>
                   <View style={styles.block}>
@@ -194,7 +212,6 @@ const Home = ({navigation}) =>{
 const styles = StyleSheet.create({
     container:{
         flex: 1,
-       
     },
     container_content:{
       margin: 12,

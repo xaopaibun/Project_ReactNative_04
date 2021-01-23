@@ -25,7 +25,7 @@ const TaiKhoanDraw = ({navigation}) =>{
                     </TouchableOpacity>
             </View>
             <View style={styles.footer}>
-                <TouchableOpacity style={styles.nutdangxuat} onPress={() => navigation.navigate('Taikhoan')}><Text style={{color : '#FFFFFF', fontSize: 14, fontWeight:'700'}}>Đăng Xuất</Text></TouchableOpacity>
+                <TouchableOpacity style={styles.nutdangxuat} onPress={() => navigation.navigate('DangNhap')}><Text style={{color : '#FFFFFF', fontSize: 14, fontWeight:'700'}}>Đăng Xuất</Text></TouchableOpacity>
             </View>
         
 

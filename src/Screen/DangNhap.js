@@ -10,21 +10,26 @@ import {
   TextInput,
   Alert,
 } from 'react-native';
+import axios from 'axios';
+import {login} from '../componnents/api';
 const DangNhap = ({navigation}) => {
-    const [SDT, setTK] = React.useState('');
-    const [MK, setMK] = React.useState('');
-    const Check = () => {
-        //SDT === '0352343938' && MK === 'vanquy' ?  Alert.alert('Thông báo', 'Bạn đã đăng nhập thành công')     : Alert.alert('Thông báo', 'Sai Tài khoản và mật khẩu');
-        if(SDT === '0352343938' && MK === 'vanquy'){
+    const [SDT, setTK] = React.useState("");
+    const [MK, setMK] = React.useState("");
+    const onLogin = async () => {
+        try {
+          const result = await login({
+            "email": SDT ,
+            "password": MK 
+          })
             Alert.alert('Thông báo', 'Bạn đã đăng nhập thành công');
-            setTK('');
-            setMK('');
             navigation.navigate('HomeApp');
+            setTK("");
+            setMK("");
+        } catch (error) {
+            Alert.alert('Thông báo', error + '');
+          
         }
-        else{
-            Alert.alert('Thông báo', 'Sai Tài khoản và mật khẩu')
-        }
-    }
+      }
   return (
     <View style={styles.container}>
         <StatusBar barStyle = 'light-content'></StatusBar>
@@ -48,7 +53,7 @@ const DangNhap = ({navigation}) => {
                         <Text style = {{color:'#3784FF', marginVertical: 20}}>Quên Mật Khẩu</Text>
                     </TouchableOpacity>
                 <View>
-                    <TouchableOpacity style={{height: 40, backgroundColor:"#C3333C", borderRadius:4 ,alignItems:'center', justifyContent:'center'}} onPress={Check}>
+                    <TouchableOpacity style={{height: 40, backgroundColor:"#C3333C", borderRadius:4 ,alignItems:'center', justifyContent:'center'}} onPress={onLogin}>
                         <Text style = {styles.text_nut}>Đăng Nhập</Text>
                     </TouchableOpacity>
                 </View>
